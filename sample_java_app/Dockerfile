@@ -14,8 +14,7 @@ RUN cp -f /tmp/onlineshop-war/pom.xml /tmp/onlineshop-war/pom_orig.xml; \
 	-s '/project/build/plugins/plugin' -t elem -n 'artifactId' -v 'maven-war-plugin' \
 	-s '/project/build/plugins/plugin' -t elem -n 'version' -v '3.3.2' \
 	 > /tmp/onlineshop-war/pom.xml; \
-	 rm -f /tmp/onlineshop-war/pom_orig.xml; \
-	 cat /tmp/onlineshop-war/pom.xml
-# RUN mvn package -f /tmp/onlineshop-war
-# RUN cp /tmp/onlineshop-war/target/*.war /usr/local/tomcat/webapps/
-# RUN rm -rf /tmp/onlineshop-war
+	 rm -f /tmp/onlineshop-war/pom_orig.xml
+RUN mvn package -f /tmp/onlineshop-war
+RUN cp /tmp/onlineshop-war/target/*.war /usr/local/tomcat/webapps/
+RUN rm -rf /tmp/onlineshop-war
