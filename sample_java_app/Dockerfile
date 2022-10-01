@@ -1,6 +1,7 @@
 FROM tomcat
 RUN apt-get update
 RUN apt-get install default-jdk -y
+RUN apt-get install git -y
 RUN apt-get install maven -y
 RUN git clone https://github.com/ashburnere/onlineshop-war.git /tmp
 RUN mvn package -f /tmp/onlineshop-war
