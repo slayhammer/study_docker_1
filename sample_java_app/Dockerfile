@@ -1,9 +1,9 @@
 FROM tomcat
 RUN apt-get update
-RUN apt-get install default-jdk -y
-RUN apt-get install git -y
-RUN apt-get install maven -y
-RUN apt-get install xmlstarlet -y
+RUN apt-get install git -y && \
+	apt-get install xmlstarlet -y
+RUN apt-get install default-jdk -y && \
+	apt-get install maven -y
 RUN git clone https://github.com/ashburnere/onlineshop-war.git /tmp/onlineshop-war
 RUN xmlstarlet ed -N x="http://maven.apache.org/POM/4.0.0" \
  -s '/project/build' -t elem -n 'plugins' \
