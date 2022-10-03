@@ -38,9 +38,8 @@ RUN rm -rf /tmp/onlineshop-war
 # Test tomcat
 WORKDIR $CATALINA_HOME
 RUN echo $PATH
-RUN ls -al
-RUN ls -al /usr/local
-RUN ls -al /usr/local/tomcat
+RUN cat $CATALINA_HOME/bin/daemon.sh
+RUN find / -type f -name "catalina.sh"
 #RUN catalina.sh version
 
 EXPOSE 8080
