@@ -38,9 +38,10 @@ RUN rm -rf /tmp/onlineshop-war
 # Test tomcat
 WORKDIR $CATALINA_HOME
 RUN echo $PATH
-RUN find / -type f -name "daemon.sh"
-RUN find / -type f -name "catalina.sh"
-#RUN catalina.sh version
+RUN ls -al /usr/share/tomcat9
+RUN ls -al /var/lib/tomcat9
+RUN /usr/share/tomcat9/bin/catalina.sh version
+RUN echo $PATH
 
 EXPOSE 8080
 
