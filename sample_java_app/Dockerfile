@@ -8,8 +8,8 @@ FROM ubuntu:20.04
 # Environment setup
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
-ENV CATALINA_HOME /var/lib/tomcat9
-ENV PATH $CATALINA_HOME/bin:$PATH
+ENV CATALINA_HOME /usr/share/tomcat9
+ENV PATH $CATALINA_HOME/bin:/var/lib/tomcat9/bin:$PATH
 
 # Seting up all necessary software and further cache cleaning:
 #	'git'         - for cloning the sample java app from a rep
@@ -38,11 +38,7 @@ RUN rm -rf /tmp/onlineshop-war
 # Test tomcat
 WORKDIR $CATALINA_HOME
 RUN echo $PATH
-RUN ls -al /usr/share/tomcat9
-RUN ls -al /var/lib/tomcat9
-RUN find / -type f -name "setclasspath.sh"
-RUN echo $PATH
-RUN /usr/share/tomcat9/bin/catalina.sh version
+RUN catalina.sh version
 
 EXPOSE 8080
 
