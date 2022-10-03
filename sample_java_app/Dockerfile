@@ -36,9 +36,7 @@ RUN cp /tmp/onlineshop-war/target/*.war /var/lib/tomcat9/webapps/
 RUN rm -rf /tmp/onlineshop-war
 
 # Test tomcat
-WORKDIR $CATALINA_HOME
-RUN echo $PATH
-RUN catalina.sh version
+RUN find / -type f -name "server.xml"
 
 EXPOSE 8080
 
