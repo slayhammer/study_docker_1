@@ -38,7 +38,7 @@ RUN rm -rf /tmp/onlineshop-war
 # Test tomcat
 WORKDIR $CATALINA_HOME
 RUN echo $PATH
-RUN cat $CATALINA_HOME/bin/daemon.sh
+RUN find / -type f -name "daemon.sh"
 RUN find / -type f -name "catalina.sh"
 #RUN catalina.sh version
 
