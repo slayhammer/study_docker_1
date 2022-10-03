@@ -37,6 +37,8 @@ RUN rm -rf /tmp/onlineshop-war
 
 # Test tomcat
 RUN find / -type f -name "server.xml"
+RUN ls -al /usr/share/tomcat9/conf
+RUN ls -al /var/lib/tomcat9/conf
 
 EXPOSE 8080
 
