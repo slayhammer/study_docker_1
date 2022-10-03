@@ -7,10 +7,11 @@ RUN apt-get update && apt-get install -y -q \
 	python-all \
 	python-pip
 
-ADD ./app.py /opt/webapp
-ADD ./Procfile /opt/webapp
-ADD ./requirements.txt /opt/webapp
-ADD ./tests.py /opt/webapp
+WORKDIR /opt/webapp
+COPY app.py /opt/webapp
+COPY Procfile /opt/webapp
+COPY requirements.txt /opt/webapp
+COPY tests.py /opt/webapp
 
 RUN pip install -qr /opt/webapp/requirements.txt
 
