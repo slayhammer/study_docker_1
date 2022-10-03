@@ -9,7 +9,8 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 ENV CATALINA_HOME /usr/share/tomcat9
-ENV PATH $CATALINA_HOME/bin:/var/lib/tomcat9/bin:$PATH
+ENV CATALINA_BASE /var/lib/tomcat9
+ENV PATH $CATALINA_HOME/bin:$CATALINA_BASE/bin:$PATH
 
 # Seting up all necessary software and further cache cleaning:
 #	'git'         - for cloning the sample java app from a rep
@@ -35,10 +36,6 @@ RUN cp /tmp/onlineshop-war/target/*.war /var/lib/tomcat9/webapps/
 # Cleaning src
 RUN rm -rf /tmp/onlineshop-war
 
-# Test tomcat
-RUN find / -type f -name "server.xml"
-RUN ls -al /var/lib/tomcat9/conf
-
+# Running environment
 EXPOSE 8080
-
 CMD ["catalina.sh", "run"]
