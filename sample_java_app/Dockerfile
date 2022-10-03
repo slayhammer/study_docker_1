@@ -38,7 +38,7 @@ RUN rm -rf /tmp/onlineshop-war
 # Test tomcat
 WORKDIR $CATALINA_HOME
 RUN echo $PATH
-RUN ll -a
+RUN ls -al
 #RUN catalina.sh version
 
 EXPOSE 8080
