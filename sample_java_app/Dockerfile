@@ -40,8 +40,9 @@ WORKDIR $CATALINA_HOME
 RUN echo $PATH
 RUN ls -al /usr/share/tomcat9
 RUN ls -al /var/lib/tomcat9
-RUN /usr/share/tomcat9/bin/catalina.sh version
+RUN find / -type f -name "setclasspath.sh"
 RUN echo $PATH
+RUN /usr/share/tomcat9/bin/catalina.sh version
 
 EXPOSE 8080
 
