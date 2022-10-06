@@ -2,17 +2,21 @@ version: '3.8'
 
 services:
   setup:
-    build: setup
+    build:
+      context: setup
+      args:
+        - catalina-base=/var/lib/tomcat9
+        - catalina-home=/usr/share/tomcat9
     init: true
     volumes:
-      - distr-vol:/tmp/onlineshop-war:z
+      - distr-vol:/tmp/onlineshop-war/target
 
   prod:
     build: prod
     ports:
       - "8080:8080"
     volumes:
-      - distr-vol:/tmp/onlineshop-war:z,ro
+      - distr-vol:/var/lib/tomcat9/webapps
     networks:
       - app-net
 

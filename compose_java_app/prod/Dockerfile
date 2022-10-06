@@ -7,9 +7,11 @@ FROM ubuntu:20.04
 
 # Environment setup
 ARG DEBIAN_FRONTEND=noninteractive
+ARG catalina-base
+ARG catalina-home
 ENV TZ=Europe/Moscow
-ENV CATALINA_HOME /usr/share/tomcat9
-ENV CATALINA_BASE /var/lib/tomcat9
+ENV CATALINA_HOME $catalina-home
+ENV CATALINA_BASE $catalina-base
 ENV PATH $CATALINA_HOME/bin:$CATALINA_BASE/bin:$PATH
 
 # Seting up all necessary software and further cache cleaning:
@@ -19,9 +21,6 @@ RUN apt-get update && apt-get install -y \
 	tomcat9 \
 	&& rm -rf /var/lib/apt/lists/*	
 
-# Installing the app on tomcat
-CMD cp -f /tmp/onlineshop-war/target/*.war $CATALINA_BASE/webapps/; catalina.sh run
-
 # Running environment
 EXPOSE 8080
-# CMD ["catalina.sh", "run"]
+CMD ["catalina.sh", "run"]
