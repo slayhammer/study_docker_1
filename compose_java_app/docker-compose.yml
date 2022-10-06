@@ -16,7 +16,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - distr-vol:$catalina-base/webapps
+      - distr-vol:${catalina-base}/webapps
     networks:
       - app-net
 
