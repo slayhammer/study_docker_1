@@ -7,11 +7,11 @@ FROM ubuntu:20.04
 
 # Environment setup
 ARG DEBIAN_FRONTEND=noninteractive
-ARG catalina-base
-ARG catalina-home
+ARG catalinabase
+ARG catalinahome
 ENV TZ=Europe/Moscow
-ENV CATALINA_HOME $catalina-home
-ENV CATALINA_BASE $catalina-base
+ENV CATALINA_HOME $catalinahome
+ENV CATALINA_BASE $catalinabase
 ENV PATH $CATALINA_HOME/bin:$CATALINA_BASE/bin:$PATH
 
 # Seting up all necessary software and further cache cleaning:

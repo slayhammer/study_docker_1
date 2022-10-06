@@ -11,13 +11,13 @@ services:
     build:
       context: prod
       args:
-        - catalina-base=/var/lib/tomcat9
-        - catalina-home=/usr/share/tomcat9
+        - catalinabase=/var/lib/tomcat9
+        - catalinahome=/usr/share/tomcat9
     ports:
       - "8080:8080"
     volumes:
 #       'webpapp' folder must be in catalina base folder
-      - distr-vol:/var/lib/tomcat9/webapps
+      - distr-vol:$catalinabase/webapps
     networks:
       - app-net
 
