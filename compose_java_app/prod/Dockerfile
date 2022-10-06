@@ -20,8 +20,8 @@ RUN apt-get update && apt-get install -y \
 	&& rm -rf /var/lib/apt/lists/*	
 
 # Installing the app on tomcat
-RUN cp -f /tmp/onlineshop-war/target/*.war $CATALINA_BASE/webapps/
+CMD cp -f /tmp/onlineshop-war/target/*.war $CATALINA_BASE/webapps/; catalina.sh run
 
 # Running environment
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
+# CMD ["catalina.sh", "run"]
