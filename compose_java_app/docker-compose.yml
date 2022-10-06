@@ -16,7 +16,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - distr-vol:${catalina-base}/webapps
+#       'webpapp' folder must be in catalina base folder
+      - distr-vol:/var/lib/tomcat9/webapps
     networks:
       - app-net
 
