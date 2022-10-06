@@ -8,11 +8,7 @@ services:
       - distr-vol:/tmp/onlineshop-war/target
 
   prod:
-    build:
-      context: prod
-      args:
-        - catalinabase=/var/lib/tomcat9
-        - catalinahome=/usr/share/tomcat9
+    build: prod
     ports:
       - "8080:8080"
     volumes:

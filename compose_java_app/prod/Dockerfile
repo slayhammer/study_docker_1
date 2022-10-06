@@ -7,11 +7,9 @@ FROM ubuntu:20.04
 
 # Environment setup
 ARG DEBIAN_FRONTEND=noninteractive
-ARG catalinabase
-ARG catalinahome
 ENV TZ=Europe/Moscow
-ENV CATALINA_HOME $catalinahome
-ENV CATALINA_BASE $catalinabase
+ENV CATALINA_HOME /usr/share/tomcat9
+ENV CATALINA_BASE /var/lib/tomcat9
 ENV PATH $CATALINA_HOME/bin:$CATALINA_BASE/bin:$PATH
 
 # Seting up all necessary software and further cache cleaning:
