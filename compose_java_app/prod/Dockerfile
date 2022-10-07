@@ -14,7 +14,8 @@ RUN mkdir $CATALINA_BASE
 
 # Seting up all necessary software and further cache cleaning:
 #	'tomcat9' - for hosting the app
-RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.tar.gz; \
+RUN apk add --no-cache openjdk8-jre-base; \
+	wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.tar.gz; \
 	tar xvzf apache-tomcat-9.0.68.tar.gz --strip-components 1 --directory $CATALINA_BASE
 
 # Running environment
