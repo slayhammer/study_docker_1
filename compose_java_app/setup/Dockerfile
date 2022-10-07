@@ -10,11 +10,9 @@ ENV TZ=Europe/Moscow
 
 # Seting up all necessary software and further cache cleaning:
 #	'git'         - for cloning the sample java app from a rep
-#	'default-jdk' - maven prereq
 #	'maven'       - for building the app
 RUN apt-get update && apt-get install -y \
 	git \
-	default-jdk \
 	maven \
 	&& rm -rf /var/lib/apt/lists/*	
 

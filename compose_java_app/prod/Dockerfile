@@ -13,10 +13,12 @@ ENV PATH $CATALINA_HOME/bin:$CATALINA_BASE/bin:$PATH
 RUN mkdir $CATALINA_BASE
 
 # Seting up all necessary software and further cache cleaning:
-#	'tomcat9' - for hosting the app
+#	'openjdk8-jre-base' - tomcat9 prereq
+#	tomcat 9.0.68       - for hosting the app
 RUN apk add --no-cache openjdk8-jre-base; \
 	wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.tar.gz; \
-	tar xvzf apache-tomcat-9.0.68.tar.gz --strip-components 1 --directory $CATALINA_BASE
+	tar xvzf apache-tomcat-9.0.68.tar.gz --strip-components 1 --directory $CATALINA_BASE; \
+	rm -f apache-tomcat-9.0.68.tar.gz
 
 # Running environment
 EXPOSE 8080
