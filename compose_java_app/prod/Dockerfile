@@ -2,21 +2,20 @@
 # wrapped in a docker container.
 # Available at http://<your_address>:8080/onlineshop
 
-# Based on 'ubuntu' ver. 20.04 Official Docker Image
-FROM ubuntu:20.04
+# Based on 'alpine' ver. 3.16.2 Official Docker Image
+FROM alpine:3.16.2
 
 # Environment setup
-ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
-ENV CATALINA_HOME /usr/share/tomcat9
 ENV CATALINA_BASE /var/lib/tomcat9
+ENV CATALINA_HOME $CATALINA_BASE
 ENV PATH $CATALINA_HOME/bin:$CATALINA_BASE/bin:$PATH
+RUN mkdir $CATALINA_BASE
 
 # Seting up all necessary software and further cache cleaning:
 #	'tomcat9' - for hosting the app
-RUN apt-get update && apt-get install -y \
-	tomcat9 \
-	&& rm -rf /var/lib/apt/lists/*	
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.tar.gz; \
+	tar xvzf apache-tomcat-9.0.44.tar.gz --strip-components 1 --directory $CATALINA_BASE
 
 # Running environment
 EXPOSE 8080

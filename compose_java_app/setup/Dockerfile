@@ -22,5 +22,4 @@ RUN apt-get update && apt-get install -y \
 RUN git clone https://github.com/ashburnere/onlineshop-war.git /tmp/onlineshop-war
 
 # Building the app
-RUN mvn package -f /tmp/onlineshop-war; \
-	ls -l /tmp/onlineshop-war/target
+RUN mvn package -f /tmp/onlineshop-war
