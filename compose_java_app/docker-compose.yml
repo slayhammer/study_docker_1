@@ -5,19 +5,19 @@ services:
     build: setup
     init: true
     volumes:
-      - distr-vol:/tmp/onlineshop-war/target
+      - distr:/tmp/onlineshop-war/target
 
   prod:
     build: prod
     ports:
       - "8080:8080"
     volumes:
-      - distr-vol:/var/lib/tomcat9/webapps
+      - distr:/var/lib/tomcat9/webapps
     networks:
       - app-net
 
 volumes:
-  distr-vol:
+  distr:
 
 networks:
   app-net:

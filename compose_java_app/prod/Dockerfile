@@ -13,8 +13,7 @@ ENV CATALINA_BASE /var/lib/tomcat9
 ENV PATH $CATALINA_HOME/bin:$CATALINA_BASE/bin:$PATH
 
 # Seting up all necessary software and further cache cleaning:
-#	'tomcat9'     - for hosting the app
-
+#	'tomcat9' - for hosting the app
 RUN apt-get update && apt-get install -y \
 	tomcat9 \
 	&& rm -rf /var/lib/apt/lists/*	
